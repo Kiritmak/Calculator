@@ -19,7 +19,7 @@ namespace Calculadora
         int a, b;
         if(opcion == 0)
         {
-          Console.WriteLine("Gracias por usar la calculadora!!!!!!");
+          Console.WriteLine("Gracias por usar la calculadora!");
           break;
         }
         a = int.Parse(Console.ReadLine());
