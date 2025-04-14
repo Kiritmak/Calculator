@@ -6,10 +6,10 @@ namespace Calculadora
   {
     static void Main(string[] args)
     {
-      Console.WriteLine("Bienvenido a Calculadora!");
+      Console.WriteLine("Bienvenido a Calculadora");
       while(true)
       {
-        Console.WriteLine("Selecciona una opcion!");
+        Console.WriteLine("Selecciona una opcion");
         Console.WriteLine("1 : sumar");
         Console.WriteLine("2 : restar");
         Console.WriteLine("3 : multiplicar");
@@ -19,7 +19,7 @@ namespace Calculadora
         int a, b;
         if(opcion == 0)
         {
-          Console.WriteLine("Gracias por usar la calculadora!");
+          Console.WriteLine("Gracias por usar la calculadora");
           break;
         }
         a = int.Parse(Console.ReadLine());
