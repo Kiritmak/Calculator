@@ -7,7 +7,7 @@ namespace Calculadora
   {
     static void Main(string[] args)
     {
-      Console.WriteLine("Bienvenido a Calculadora");
+      Console.WriteLine("Bienvenido a Calculadora, usa close para cerrar el programa");
       int opcion;
       do
       {
@@ -16,13 +16,15 @@ namespace Calculadora
 
         string? calculation = Console.ReadLine();
         if(calculation.ToLower() == "close") break;
-        try 
-        {
-          result = dt.Compute(calculation, "");
-        }
+        try { result = dt.Compute(calculation, ""); }
         catch (Exception e) 
         {
           Console.WriteLine("Entrada Incorrecta : {0}", e.Message);
+          continue;
+        }
+        if(double.IsInfinity(double.Parse(result.ToString())))
+        {
+          Console.WriteLine("Entrada Incorrecta : División por cero");
           continue;
         }
         Console.WriteLine(result);
