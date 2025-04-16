@@ -7,36 +7,41 @@ namespace Calculadora
     static void Main(string[] args)
     {
       Console.WriteLine("Bienvenido a Calculadora");
-      while(true)
+      int opcion;
+      do
       {
+        decimal a, b;
         Console.WriteLine("Selecciona una opcion");
         Console.WriteLine("1 : sumar");
         Console.WriteLine("2 : restar");
         Console.WriteLine("3 : multiplicar");
         Console.WriteLine("4 : dividir");
         Console.WriteLine("0 : cerrar la calculadora");
-        int opcion = int.Parse(Console.ReadLine());
-        int a, b;
-        if(opcion == 0)
+        if(!int.TryParse(Console.ReadLine(), out opcion) || opcion<0 || 4 < opcion) 
         {
-          Console.WriteLine("Gracias por usar la calculadora!!!!!!");
-          break;
+          Console.WriteLine("Input Incorrecta");
+          continue;
         }
-        a = int.Parse(Console.ReadLine());
-        b = int.Parse(Console.ReadLine());
-        switch (opcion)
+        if(opcion==0) break;
+        if(!decimal.TryParse(Console.ReadLine(), out a) || !decimal.TryParse(Console.ReadLine(), out b))
         {
-          case 1 : Console.WriteLine("El resultado es {0}", a+b); break;
-          case 2 : Console.WriteLine("El resultado es {0}", a-b); break;
-          case 3 : Console.WriteLine("El resultado es {0}", a*b); break;
-          case 4 : 
+          Console.WriteLine("Input Incorrecta");
+          continue;
+        }
+        if(opcion==1) Console.WriteLine("El resultado es: {0}", a+b); 
+        else if(opcion==2) Console.WriteLine("El resultado es: {0}", a-b);
+        else if(opcion==3) Console.WriteLine("El resultado es: {0}", a*b);
+        else if(opcion==4)
+        {
+          if(b==0) 
           {
-            if(b==0) throw new DivideByZeroException();
-            Console.WriteLine("El resultado es {0}", a/b); break;
+            Console.WriteLine("No se puede dividir por cero");
+            continue;
           }
-          default : throw new ArgumentException("Input Incorrecta, opcion"); 
+          Console.WriteLine("El resultado es: {0}", a/b);
         }
-      }
+      } while(true);
+      Console.WriteLine("Gracias por usar la calculadora!!!!!!");
     }
   }
 }
